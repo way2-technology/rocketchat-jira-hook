@@ -13,11 +13,12 @@ function prepareAttachment({issue, user}, text) {
 	let res = {
 		author_name: user.displayName
 		, author_icon: user.avatarUrls['24x24']
-		, thumb_url: config.avatar
+		, thumb_url: issueType.iconUrl
 	};
 	if (text) {
 		text = text.replace(/\{\{(user|issue)\.([^a-z_0-9]+)\}\}/g, (m, type, key) => (type==='user' ? user : issue)[key]);
 		res.text = text;
+		res.avatar = config.avatar
 	}
 	return res;
 }
